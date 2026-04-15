@@ -55,10 +55,50 @@ All images are **locally downloaded** from Google's AI-generated image URLs:
 ### Local Testing
 Simply open `index.html` in a web browser. All pages reference each other with relative links.
 
-### GitHub Pages Deployment
+### GitHub Pages Deployment with GitHub Actions
+
+#### **Automatic Deployment Workflow (Recommended)**
+
+This repository includes automated GitHub Actions workflow for continuous deployment.
+
+**Setup (One-time):**
+1. Push to your GitHub repository
+2. Go to repository **Settings** → **Pages**
+3. Under "Build and deployment", select **Source: GitHub Actions**
+4. The workflow will automatically run on every push
+
+**How it works:**
+- Event: You push code to `main` branch
+- Action: GitHub Actions automatically builds and deploys
+- Result: Site live at `https://yourusername.github.io/`
+
+**Deployment Process:**
+```bash
+# Make changes to your files
+git add .
+git commit -m "Update portfolio"
+git push origin main
+
+# ✅ Automatic deployment starts!
+# Check progress: GitHub repository → Actions tab
+```
+
+**Monitor Deployment:**
+1. Go to repository → **Actions** tab
+2. Click the latest workflow run
+3. Watch status: 🟡 Running → 🟢 Completed
+
+**Deployment Timeline:**
+- Push to GitHub: ~5 seconds
+- Workflow triggers: ~10 seconds  
+- Deploy to Pages: ~30 seconds
+- **Total: ~1 minute to live**
+
+#### **Direct GitHub Pages (Manual)**
+Alternative if you don't want GitHub Actions:
 1. Push this folder to a GitHub repository
 2. Enable GitHub Pages in repository settings
-3. Set the source to the root directory or `/docs` folder
+3. Set the source to "Deploy from a branch"
 4. Access your site at `https://yourusername.github.io/repo-name/`
 
 ### Internet Hosting
@@ -67,6 +107,16 @@ Works on any standard web hosting with no special requirements:
 - No databases
 - No build process required
 - Pure static HTML/CSS
+
+### Workflow File Location
+GitHub Actions configuration is in: `.github/workflows/deploy.yml`
+
+**What it does:**
+- ✅ Triggered on every push to `main` branch
+- ✅ Uploads all repository files
+- ✅ Deploys to GitHub Pages automatically
+- ✅ Shows deployment URL in Actions summary
+- ✅ Handles all permissions automatically
 
 ## 🛠️ Future Enhancements
 
